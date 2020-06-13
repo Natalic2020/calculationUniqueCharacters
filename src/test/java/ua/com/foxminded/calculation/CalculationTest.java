@@ -9,17 +9,15 @@ class CalculationTest {
 	Calculation calculation = new Calculation();
 
     @Test
-    void reverseOnlyLetters_shouldThrowIllegalArgumentException_whenInputNull() {
-
+    void calculationUniqueCharacters_shouldThrowIllegalArgumentException_whenInputNull() {
         final String input = null;
-
         assertThrows(IllegalArgumentException.class, () -> {
         	calculation.calculationUniqueCharacters(input);
         });
     }
 
     @Test
-    void reverseOnlyLetters_shouldReturnTheSame_whenInputEmptyString() {
+    void calculationUniqueCharacters_shouldReturnEmptyString_whenInputEmptyString() {
 
         final String input = "";
         final String actual = calculation.calculationUniqueCharacters(input);
@@ -29,7 +27,7 @@ class CalculationTest {
     }
 
     @Test
-    void reverseOnlyLetters_shouldReturnTheSame_whenInputEmptyString1() {
+    void calculationUniqueCharacters_shouldReturnCountUniqueCharacters_whenInputText() {
 
     	final String input = "Hello world!";
         final String actual = calculation.calculationUniqueCharacters(input);
