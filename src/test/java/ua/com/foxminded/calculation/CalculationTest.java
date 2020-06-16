@@ -18,7 +18,6 @@ class CalculationTest {
 
     @Test
     void calculationUniqueCharacters_shouldReturnEmptyString_whenInputEmptyString() {
-
         final String input = "";
         final String actual = calculation.calculationUniqueCharacters(input);
         final String expected = input;
@@ -28,7 +27,6 @@ class CalculationTest {
 
     @Test
     void calculationUniqueCharacters_shouldReturnCountUniqueCharacters_whenInputText() {
-
     	final String input = "Hello world!";
         final String actual = calculation.calculationUniqueCharacters(input);
         final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n", //
@@ -41,6 +39,20 @@ class CalculationTest {
 			"\"w\" - 1",  // 
 			"\"r\" - 1",  // 
 			"\"d\" - 1",  // 
+			"\"!\" - 1");
+    assertEquals(expected, actual);
+    }
+    
+    @Test
+    void calculationUniqueCharacters_shouldReturnCountBigAndSmallLettersApart_whenInputTextWithTheSameBigAndSmallLetters() {
+    	final String input = "HhHh HuH!";
+        final String actual = calculation.calculationUniqueCharacters(input);
+        final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n", //
+			"HhHh HuH!",  // 
+			"\"H\" - 4",  // 
+			"\"h\" - 2",  // 
+			"\" \" - 1",  // 
+			"\"u\" - 1",  // 
 			"\"!\" - 1");
     assertEquals(expected, actual);
     }
