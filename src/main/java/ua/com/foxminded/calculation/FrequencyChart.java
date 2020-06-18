@@ -28,18 +28,23 @@ public class FrequencyChart {
 			String outputString = cache.get(text);
 			return String.format("%s%n", text) + outputString;
 		}	
+		Map<Character, Integer> uniqueCharacters = prepareMapWithUniqueCharacters(text);
+		String outputUniqueCharacters = formOutputUniqueCharacters(uniqueCharacters);
+		cache.merge(text, outputUniqueCharacters, (oldVal, newVal) -> newVal);
+		return String.format("%s%n", text) + outputUniqueCharacters;
+	}
+
+	private String formOutputUniqueCharacters(Map<Character, Integer> uniqueCharacters) {
+		return uniqueCharacters.entrySet().stream().map(x -> "\"" + x.getKey() + "\" - " + x.getValue().toString())
+				.collect(Collectors.joining(System.lineSeparator()));
+	}
+
+	private Map<Character, Integer> prepareMapWithUniqueCharacters(final String text) {
 		char[] charactersChar = text.toCharArray();
-		
-		Map<Character, Integer> uniqueCharacters = new LinkedHashMap<>();
-		 
+		Map<Character, Integer> uniqueCharacters = new LinkedHashMap<>();	 
 		for (char ch : charactersChar) {
 			  uniqueCharacters.merge(ch, 1, (oldValue, newValue) -> oldValue + 1);
 	        }
-		String outputUniqueCharacters = uniqueCharacters.entrySet().stream().map(x -> "\"" + x.getKey() + "\" - " + x.getValue().toString())
-				.collect(Collectors.joining(System.lineSeparator()));
-	
-		cache.merge(text, outputUniqueCharacters, (oldVal, newVal) -> newVal);
-
-		return String.format("%s%n", text) + outputUniqueCharacters;
+		return uniqueCharacters;
 	}	
 }
