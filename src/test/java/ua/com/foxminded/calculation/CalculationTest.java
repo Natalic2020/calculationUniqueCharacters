@@ -29,7 +29,7 @@ class CalculationTest {
     void calculateUniqueCharactersUseCache_shouldCountSymbol_whenInputText() {
     	final String input = "Hello world!";
         final String actual = calculation.calculateUniqueCharactersUseCache(input);
-        final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n", //
+        final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s", //
 			"Hello world!", // 
 			"\"H\" - 1",  // 
 			"\"e\" - 1",  // 
@@ -47,7 +47,7 @@ class CalculationTest {
     void calculateUniqueCharactersUseCache_shouldReturnCountBigAndSmallLettersApart_whenInputTextWithTheSameBigAndSmallLetters() {
     	final String input = "HhHh HuH!";
         final String actual = calculation.calculateUniqueCharactersUseCache(input);
-        final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n", //
+        final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s", //
 			"HhHh HuH!",  // 
 			"\"H\" - 4",  // 
 			"\"h\" - 2",  // 
