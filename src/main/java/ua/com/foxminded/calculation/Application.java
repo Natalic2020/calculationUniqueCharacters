@@ -3,12 +3,12 @@ package ua.com.foxminded.calculation;
 public class Application {
 
 	public static void main(String[] args) {
-		Calculation calculation = new Calculation();
+		FrequencyChart calculation = new FrequencyChart();
 		String[] textToCalculationUniqueCharacters = new String[] { "Hello world!", "Goo01d eve//ning",
 				"Hello world!" };
 		for (String input : textToCalculationUniqueCharacters) {
 			try {
-				System.out.println(calculation.calculationUniqueCharacters(input));
+				System.out.println(calculation.calculateUniqueCharactersUseCache(input));
 			} catch (IllegalArgumentException e) {
 				System.out.println("Invalid  input:\"" + e.getMessage() + "\"");
 			}

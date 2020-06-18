@@ -6,29 +6,29 @@ import org.junit.jupiter.api.Test;
 
 class CalculationTest {
 
-	Calculation calculation = new Calculation();
+	FrequencyChart calculation = new FrequencyChart();
 
     @Test
-    void calculationUniqueCharacters_shouldThrowIllegalArgumentException_whenInputNull() {
+    void calculateUniqueCharactersUseCache_shouldThrowIllegalArgumentException_whenInputNull() {
         final String input = null;
         assertThrows(IllegalArgumentException.class, () -> {
-        	calculation.calculationUniqueCharacters(input);
+        	calculation.calculateUniqueCharactersUseCache(input);
         });
     }
 
     @Test
-    void calculationUniqueCharacters_shouldReturnEmptyString_whenInputEmptyString() {
+    void calculateUniqueCharactersUseCache_shouldReturnEmptyString_whenInputEmptyString() {
         final String input = "";
-        final String actual = calculation.calculationUniqueCharacters(input);
+        final String actual = calculation.calculateUniqueCharactersUseCache(input);
         final String expected = input;
 
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculationUniqueCharacters_shouldReturnCountUniqueCharacters_whenInputText() {
+    void calculateUniqueCharactersUseCache_shouldCountSymbol_whenInputText() {
     	final String input = "Hello world!";
-        final String actual = calculation.calculationUniqueCharacters(input);
+        final String actual = calculation.calculateUniqueCharactersUseCache(input);
         final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n", //
 			"Hello world!", // 
 			"\"H\" - 1",  // 
@@ -44,9 +44,9 @@ class CalculationTest {
     }
     
     @Test
-    void calculationUniqueCharacters_shouldReturnCountBigAndSmallLettersApart_whenInputTextWithTheSameBigAndSmallLetters() {
+    void calculateUniqueCharactersUseCache_shouldReturnCountBigAndSmallLettersApart_whenInputTextWithTheSameBigAndSmallLetters() {
     	final String input = "HhHh HuH!";
-        final String actual = calculation.calculationUniqueCharacters(input);
+        final String actual = calculation.calculateUniqueCharactersUseCache(input);
         final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n", //
 			"HhHh HuH!",  // 
 			"\"H\" - 4",  // 
