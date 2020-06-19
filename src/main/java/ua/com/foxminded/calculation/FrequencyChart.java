@@ -7,36 +7,31 @@ import java.util.stream.Collectors;
 
 public class FrequencyChart {
 
-	Map<String, String> cache = new HashMap<>();
-	
-	public String calculationUniqueCharacters(final String text) {
-		return calculateUniqueCharactersUseCache(text);
-	}
+	Map<String, Map<Character, Integer>> cache = new HashMap<>();
 
-	public String calculateUniqueCharactersUseCache(final String text) {
+	public String outputUniqueCharactersCached(final String text) {
 		if (text == null) {
 			throw new IllegalArgumentException("Null parameters are not allowed");
 		}
 		if (text.isEmpty()) {
 			return text;
 		}
-		return countUniqueCharacters(text);
+		Map<Character, Integer> uniqueCharacters = countUniqueCharacters(text);
+		return formOutputUniqueCharacters(uniqueCharacters, text);
 	}
 
-	private String countUniqueCharacters(final String text) {
+	private Map<Character, Integer>  countUniqueCharacters(final String text) {
 		if (cache.containsKey(text)){
-			String outputString = cache.get(text);
-			return String.format("%s%n", text) + outputString;
+			return cache.get(text);
 		}	
 		Map<Character, Integer> uniqueCharacters = prepareMapWithUniqueCharacters(text);
-		String outputUniqueCharacters = formOutputUniqueCharacters(uniqueCharacters);
-		cache.merge(text, outputUniqueCharacters, (oldVal, newVal) -> newVal);
-		return String.format("%s%n", text) + outputUniqueCharacters;
+		cache.merge(text, uniqueCharacters, (oldVal, newVal) -> newVal);
+		return uniqueCharacters;
 	}
 
-	private String formOutputUniqueCharacters(Map<Character, Integer> uniqueCharacters) {
-		return uniqueCharacters.entrySet().stream().map(x -> "\"" + x.getKey() + "\" - " + x.getValue().toString())
-				.collect(Collectors.joining(System.lineSeparator()));
+	private String formOutputUniqueCharacters(Map<Character, Integer> uniqueCharacters, final String text) {
+		return String.format("%s%n%s", text, uniqueCharacters.entrySet().stream().map(x -> "\"" + x.getKey() + "\" - " + x.getValue().toString())
+				.collect(Collectors.joining(System.lineSeparator())));
 	}
 
 	private Map<Character, Integer> prepareMapWithUniqueCharacters(final String text) {

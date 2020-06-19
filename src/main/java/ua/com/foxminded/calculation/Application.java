@@ -8,7 +8,7 @@ public class Application {
 				"Hello world!" };
 		for (String input : textToCalculationUniqueCharacters) {
 			try {
-				System.out.println(calculation.calculateUniqueCharactersUseCache(input));
+				System.out.println(calculation.outputUniqueCharactersCached(input));
 			} catch (IllegalArgumentException e) {
 				System.out.println("Invalid  input:\"" + e.getMessage() + "\"");
 			}

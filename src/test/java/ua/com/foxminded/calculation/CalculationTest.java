@@ -9,26 +9,26 @@ class CalculationTest {
 	FrequencyChart calculation = new FrequencyChart();
 
     @Test
-    void calculateUniqueCharactersUseCache_shouldThrowIllegalArgumentException_whenInputNull() {
+    void outputUniqueCharactersCached_shouldThrowIllegalArgumentException_whenInputNull() {
         final String input = null;
         assertThrows(IllegalArgumentException.class, () -> {
-        	calculation.calculateUniqueCharactersUseCache(input);
+        	calculation.outputUniqueCharactersCached(input);
         });
     }
 
     @Test
-    void calculateUniqueCharactersUseCache_shouldReturnEmptyString_whenInputEmptyString() {
+    void outputUniqueCharactersCached_shouldReturnEmptyString_whenInputEmptyString() {
         final String input = "";
-        final String actual = calculation.calculateUniqueCharactersUseCache(input);
+        final String actual = calculation.outputUniqueCharactersCached(input);
         final String expected = input;
 
         assertEquals(expected, actual);
     }
 
     @Test
-    void calculateUniqueCharactersUseCache_shouldCountSymbol_whenInputText() {
+    void outputUniqueCharactersCached_shouldCountSymbol_whenInputText() {
     	final String input = "Hello world!";
-        final String actual = calculation.calculateUniqueCharactersUseCache(input);
+        final String actual = calculation.outputUniqueCharactersCached(input);
         final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s", //
 			"Hello world!", // 
 			"\"H\" - 1",  // 
@@ -44,9 +44,9 @@ class CalculationTest {
     }
     
     @Test
-    void calculateUniqueCharactersUseCache_shouldReturnCountBigAndSmallLettersApart_whenInputTextWithTheSameBigAndSmallLetters() {
+    void outputUniqueCharactersCached_shouldReturnCountBigAndSmallLettersApart_whenInputTextWithTheSameBigAndSmallLetters() {
     	final String input = "HhHh HuH!";
-        final String actual = calculation.calculateUniqueCharactersUseCache(input);
+        final String actual = calculation.outputUniqueCharactersCached(input);
         final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s", //
 			"HhHh HuH!",  // 
 			"\"H\" - 4",  // 
