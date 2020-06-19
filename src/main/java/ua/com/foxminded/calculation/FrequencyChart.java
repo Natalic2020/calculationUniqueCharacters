@@ -9,7 +9,7 @@ public class FrequencyChart {
 
 	Map<String, Map<Character, Integer>> cache = new HashMap<>();
 
-	public String outputUniqueCharactersCached(final String text) {
+	public String formUniqueCharsChartCached(final String text) {
 		if (text == null) {
 			throw new IllegalArgumentException("Null parameters are not allowed");
 		}

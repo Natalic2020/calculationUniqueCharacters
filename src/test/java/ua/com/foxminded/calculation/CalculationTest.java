@@ -9,26 +9,26 @@ class CalculationTest {
 	FrequencyChart calculation = new FrequencyChart();
 
     @Test
-    void outputUniqueCharactersCached_shouldThrowIllegalArgumentException_whenInputNull() {
+    void formUniqueCharsChartCached_shouldThrowIllegalArgumentException_whenInputNull() {
         final String input = null;
         assertThrows(IllegalArgumentException.class, () -> {
-        	calculation.outputUniqueCharactersCached(input);
+        	calculation.formUniqueCharsChartCached(input);
         });
     }
 
     @Test
-    void outputUniqueCharactersCached_shouldReturnEmptyString_whenInputEmptyString() {
+    void formUniqueCharsChartCached_shouldReturnEmptyString_whenInputEmptyString() {
         final String input = "";
-        final String actual = calculation.outputUniqueCharactersCached(input);
+        final String actual = calculation.formUniqueCharsChartCached(input);
         final String expected = input;
 
         assertEquals(expected, actual);
     }
 
     @Test
-    void outputUniqueCharactersCached_shouldCountSymbol_whenInputText() {
+    void formUniqueCharsChartCached_shouldCountSymbols_whenInputText() {
     	final String input = "Hello world!";
-        final String actual = calculation.outputUniqueCharactersCached(input);
+        final String actual = calculation.formUniqueCharsChartCached(input);
         final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s", //
 			"Hello world!", // 
 			"\"H\" - 1",  // 
@@ -44,9 +44,9 @@ class CalculationTest {
     }
     
     @Test
-    void outputUniqueCharactersCached_shouldReturnCountBigAndSmallLettersApart_whenInputTextWithTheSameBigAndSmallLetters() {
+    void formUniqueCharsChartCached_shouldReturnCountBigAndSmallLettersApart_whenInputTextWithTheSameBigAndSmallLetters() {
     	final String input = "HhHh HuH!";
-        final String actual = calculation.outputUniqueCharactersCached(input);
+        final String actual = calculation.formUniqueCharsChartCached(input);
         final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s", //
 			"HhHh HuH!",  // 
 			"\"H\" - 4",  // 
