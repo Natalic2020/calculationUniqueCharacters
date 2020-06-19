@@ -24,7 +24,54 @@ class CalculationTest {
 
         assertEquals(expected, actual);
     }
+    
+    @Test
+    void formUniqueCharsChartCached_shouldCountDigits_whenInputDigits() {
+    	final String input = "12345612333";
+        final String actual = calculation.formUniqueCharsChartCached(input);
+        final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s", //
+			"12345612333",  //
+			"\"1\" - 2",  //
+			"\"2\" - 2",  //
+			"\"3\" - 4",  //
+			"\"4\" - 1",  //
+			"\"5\" - 1",  //
+			"\"6\" - 1");
+    assertEquals(expected, actual);
+    }
 
+    @Test
+    void formUniqueCharsChartCached_shouldCountDigits_whenInputOnlyDigits() {
+    	final String input = "12345612333";
+        final String actual = calculation.formUniqueCharsChartCached(input);
+        final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s", //
+			"12345612333",  //
+			"\"1\" - 2",  //
+			"\"2\" - 2",  //
+			"\"3\" - 4",  //
+			"\"4\" - 1",  //
+			"\"5\" - 1",  //
+			"\"6\" - 1");
+    assertEquals(expected, actual);
+    }
+    
+    @Test
+    void formUniqueCharsChartCached_shouldCountSpecialCharacters_whenInputOnlySpecialCharacters() {
+    	final String input = "!@*/&%$§!@!@";
+        final String actual = calculation.formUniqueCharsChartCached(input);
+        final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s", //
+			"!@*/&%$§!@!@",  // 
+			"\"!\" - 3",  // 
+			"\"@\" - 3",  // 
+			"\"*\" - 1",  // 
+			"\"/\" - 1",  // 
+			"\"&\" - 1",  // 
+			"\"%\" - 1",  // 
+			"\"$\" - 1",  // 
+			"\"§\" - 1");
+    assertEquals(expected, actual);
+    }
+    
     @Test
     void formUniqueCharsChartCached_shouldCountSymbols_whenInputText() {
     	final String input = "Hello world!";
@@ -54,6 +101,26 @@ class CalculationTest {
 			"\" \" - 1",  // 
 			"\"u\" - 1",  // 
 			"\"!\" - 1");
+    assertEquals(expected, actual);
+    }
+    
+    @Test
+    void formUniqueCharsChartCached_shouldCountSymbols_whenInputLettersDigitsSpecialCharacters() {
+    	final String input = "Hehe&%$125Bebe55%%";
+        final String actual = calculation.formUniqueCharsChartCached(input);
+        final String expected = String.format("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s", //
+			"Hehe&%$125Bebe55%%",  //
+			"\"H\" - 1",  //
+			"\"e\" - 4",  //
+			"\"h\" - 1",  //
+			"\"&\" - 1",  //
+			"\"%\" - 3",  //
+			"\"$\" - 1",  //
+			"\"1\" - 1",  //
+			"\"2\" - 1",  //
+			"\"5\" - 3",  //
+			"\"B\" - 1",  //
+			"\"b\" - 1");
     assertEquals(expected, actual);
     }
 }
